@@ -1,5 +1,10 @@
 import React from 'react';
-
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Containerimage from '../Containerimage.png';
 class container extends React.Component{
   constructor(props){
     super(props);
@@ -20,14 +25,26 @@ class container extends React.Component{
 render(){
   return (
     <div className="container">
-       <h1  className='ak1'>Create Container </h1>
+    <Card sx={{ maxWidth: 345 }}>
+    <CardMedia
+      sx={{ height: 140 }}
+      image={Containerimage}
+      title="green iguana"
+    />
+    <CardContent>
+    <h1  className='ak1'>Build on the go, right from a click. </h1>
        <input type="text" className='in1' id="name" placeholder='Container Name(Optional)'></input>
        <input type="text"  className='in1' id="image" placeholder='Image Name(Required)'></input>
        <input type="text" className='in1' id="tag" placeholder='Tag Name(Optional)'></input>
-       <button className='in1' onClick={event =>{this.createcontainer();}} >container create</button><br/>
-       <p>{this.state.apiResponse}</p>
        
-       </div>
+    </CardContent>
+    <CardActions>
+      <Button onClick={event =>{this.createcontainer();}}>Create Container</Button>
+      <p>{this.state.apiResponse}</p> 
+    </CardActions>
+  </Card>
+  </div>
+
     
   );
   
