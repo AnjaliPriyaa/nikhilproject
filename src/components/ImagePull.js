@@ -1,4 +1,11 @@
 import React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+
+
 class ImagePull extends React.Component{
   constructor(props){
     super(props);
@@ -17,14 +24,37 @@ class ImagePull extends React.Component{
   
 render(){
   return (
-    <div className="ImagePull">
-       <h1 className='ak3'>PuLL Image </h1>
-       <input type="text" className='in1' id="pullimage" placeholder='Image Name(Required)'></input>
+    <div className="ImagePull" style={{ display: 'inline-block'}}>
+    <Card sx={{ maxWidth: 345}}>
+    <CardContent>
+    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 2 }} >
+    <Grid item xs={2}>
+    <h1 className='ak3'>PuLL Image </h1>
+    </Grid>
+    <Grid item xs={2}>
+    <TextField id="outlined-basic" label="Image Name" variant="outlined" placeholder='Image Name(Required)' />
+    </Grid>
+    <Grid item xs={2}>
+    
+    <TextField id="outlined-basic" label="Tag Name" variant="outlined" placeholder='Tag Name(Optional)' />
+    </Grid>
+    <Grid item xs={2} >
+      <Button variant="contained"onClick={event =>{this.PullImage();}} >Submit To Pull Image</Button>
+    </Grid>
+    <Grid item xs={2}>
+    <p>{this.state.apiResponse}</p> 
+    </Grid>
+    </Grid>
+   
+    <input type="text" className='in1' id="pullimage" placeholder='Image Name(Required)'></input>
        <input type="text" className='in1' id="pulltag" placeholder='Tag Name(Optional)'></input><br/>
-       <button onClick={event =>{this.PullImage();}} >container create</button><br/>
-       <p>{this.state.apiResponse}</p>
+
+    </CardContent>
+
+ 
+    </Card>
+  </div>
        
-       </div>
     
   );
   
