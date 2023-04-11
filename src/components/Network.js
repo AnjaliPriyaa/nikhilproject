@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import React from 'react';
 var container;
 var cn;
@@ -102,7 +103,7 @@ render(){
         <div className="Network">
        <div className="Nbody1">
        
-       <button className='circle' onClick={event =>{this.Network();}} >Search Network</button>
+       <Typography sx={{border: '2px solid black', borderRadius: '20vh', height:70, width: 70, padding:8, fontSize:'1.2rem'}} onClick={event =>{this.Network();}} >Search Network</Typography>
        </div></div>
   );
  else if(this.val===2){

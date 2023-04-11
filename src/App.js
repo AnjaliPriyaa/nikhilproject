@@ -11,14 +11,32 @@ var text="</>";
 
 var content;
 const Compiler = (props) =>{
-  const {page, setPage} = props;
+  const solve = () =>{
+    fetch("http://localhost:9000/cmd?"+document.getElementsByClassName('compilertext')[0].value)
+    .then(res=>res.text())
+    .then(res=>{
+      alert(res.length)
+      if(res.length==2){
+        if(content==undefined)content="<div style='color:yellow'>-->"+document.getElementsByClassName('compilertext')[0].value+"<-- is not a valid command</div>";
+        else content+=document.getElementsByClassName('compilertext')[0].value+"->not a valid command<-";
+      }
+      else{
+      if(content==undefined)content="<div>-> <div style='display:inline-flex;'>"+JSON.parse(res)+"</div></div>";
+      else content+="<div>-> <div style='display:inline-flex;'>"+JSON.parse(res)+"</div></div>";}
+      document.getElementsByClassName('content')[0].innerHTML=content;
+      document.getElementsByClassName('compilertext')[0].value="";
+      // content.push(JSON.parse(res));
+      // document.getElementsByClassName('content')[0].innerHTML=content;
+      // document.getElementsByClassName('compilertext')[0].value="";
+    })
+    
+  }
   return (
     <div>
        <Paper sx={{backgroundColor: 'black',height: '700px'}}>
         <div className="contentbox"><pre className="content">{content}</pre></div>
-        <input className="compilertext" rows="1" onKeyDown={(e)=>{if(e.keyCode == 13)this.solve();}}></input>
+        <input className="compilertext" rows="1" onKeyDown={(e)=>{if(e.keyCode == 13)solve();}}></input>
        </Paper> 
-       }
     </div>
   );
 }
@@ -90,7 +108,7 @@ return (
           </Grid>
         </Grid>
       </Paper>
-    <Paper>
+    <Paper sx={{height:'87vh'}}>
      {this.state.page === 0 && <Networks/>}
      {this.state.page === 1 && <Container/> }
      {this.state.page === 2 && <Image/> }
