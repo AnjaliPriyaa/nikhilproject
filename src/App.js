@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar'
 import Container from './components/container'
 import Image from './components/ImagePull'
@@ -10,6 +10,18 @@ import Logo from './logo.png';
 var text="</>";
 
 var content;
+const Compiler = (props) =>{
+  const {page, setPage} = props;
+  return (
+    <div>
+       <Paper sx={{backgroundColor: 'black',height: '700px'}}>
+        <div className="contentbox"><pre className="content">{content}</pre></div>
+        <input className="compilertext" rows="1" onKeyDown={(e)=>{if(e.keyCode == 13)this.solve();}}></input>
+       </Paper> 
+       }
+    </div>
+  );
+}
 class App extends React.Component{
   
   valueapp=1;
@@ -54,7 +66,7 @@ render(){
 return (
     <div className="App">
       <Paper sx={{height: '10vh', width: '100%'}}>
-        <Grid container spacing={2} sx={{paddingTop: '10px'}}>
+        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 14 }} sx={{paddingTop: '10px'}}>
           <Grid item xs={2}>
             <Avatar src={Logo} sx={{ marginLeft: '20px',width: 70, height: 70 }} />
           </Grid>
@@ -71,6 +83,9 @@ return (
             <Button variant="contained" onClick={()=>{this.setState({page:3})}} >Image Details</Button>
           </Grid>
           <Grid item xs={2}>
+            <Button variant="contained" onClick={()=>{this.setState({page:4})}} >Open Cli</Button>
+          </Grid>
+          <Grid item xs={2}>
           <Typography> <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">Download Backend</Link> </Typography>
           </Grid>
         </Grid>
@@ -80,15 +95,10 @@ return (
      {this.state.page === 1 && <Container/> }
      {this.state.page === 2 && <Image/> }
      {this.state.page === 3 && <Details/> }
+     {this.state.page ===4 && <Compiler /> }
      </Paper>
      <Navbar/>
-      <button className="compiler" onClick={event =>{this.screen1();}}>{text}</button>
-     <div className="Aps">
-      <div className="contentbox"><pre className="content">{content}</pre></div>
-      <button className="compiler" onClick={event =>{this.screen2();}}>x</button>
-      <input className="compilertext" rows="1" onKeyDown={(e)=>{if(e.keyCode == 13)this.solve();}}></input>
-       </div>
-       </div>
+      </div>
   );
 
 
