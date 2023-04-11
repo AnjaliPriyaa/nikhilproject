@@ -76,14 +76,14 @@ return (
           </Grid>
         </Grid>
       </Paper>
-    <div className="Apps">
+    <Paper>
      <Networks/>
      <Container/>
      <Image/>
      <Details/>
      <Navbar/>
+     </Paper>
       <button className="compiler" onClick={event =>{this.screen1();}}>{text}</button>
-     </div>
      <div className="Aps">
       <div className="contentbox"><pre className="content">{content}</pre></div>
       <button className="compiler" onClick={event =>{this.screen2();}}>x</button>

@@ -1,5 +1,4 @@
 import React from 'react';
-import './ImagePull.css';
 class ImagePull extends React.Component{
   constructor(props){
     super(props);

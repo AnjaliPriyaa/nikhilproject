@@ -1,5 +1,4 @@
 import React from 'react';
-import './Network.css';
 var container;
 var cn;
 var sources;
