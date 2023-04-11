@@ -1,0 +1,22 @@
+
+.ImagePull {
+    text-align: center;
+    height: fit-content;
+    position: absolute;
+    right:6px;
+    top: 255px;
+    color:white;
+    padding: 5px;
+    height: 200px;
+    background-color: #144272/*E96479*/;
+    width:21vw;
+    min-width:365px;
+  }
+h1.ak3{
+  padding-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  font-family: Verdana, sans-serif;
+  text-shadow: 2px 2px #1c87c9;
+  color: red;  
+}
