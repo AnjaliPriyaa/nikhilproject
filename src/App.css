@@ -1,0 +1,82 @@
+.App{
+  text-align: center;
+  background-color: #8ec3bc;
+  height: 150px;
+  width: calc(100vw - 380px);;
+}
+.ck{
+  background-color: #282c34;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.title{
+  position: absolute;
+  top: +7px;left: 0px;
+  width: 150px;
+  
+}
+.link{
+  float: left;
+  position: absolute;
+  top: -5px;left: -2px;
+  
+  padding-left: 10px;
+  text-decoration: none;
+  z-index:1;
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Aps{
+  display: none;
+}
+.Apps>.compiler{
+  position: absolute;right:380px;
+}
+.Aps>.compiler{
+  position: fixed;right:0px;
+}
+.Aps{
+  position: fixed;
+  padding: 10px;
+  top:0px;
+  left:0px;
+  width:100vw;
+  height:700px;
+  overflow-y: scroll;
+  background-color: black;
+}
+.compilertext{
+  position: fixed;
+  bottom:0px;
+  resize: none;
+  height: 40px;
+  width: 100vw;
+  left: 0px;
+}
+.content{
+  text-align: left;
+  color: white;
+}
+.contentbox{
+  position: fixed;
+  padding: 10px;
+  box-sizing: border-box;
+  bottom:45px;
+  left:0px;
+  width:100vw;
+  height:fit-content;
+  max-height:700px;
+  overflow-y: scroll;
+
+}

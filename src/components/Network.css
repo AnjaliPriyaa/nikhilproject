@@ -1,0 +1,78 @@
+
+.Network{
+    width: calc(100vw );;
+    background-color: red;
+    height: 555px;
+    position: absolute;
+    bottom: 100px;
+    left:0px;
+}
+.Nbody1{
+    width: calc(100vw - 380px);
+    background-color: #97D2EC;
+    height: 555px;
+}
+.Nbody2{
+    width: calc(100vw - 380px);
+    position: absolute;
+    background-color: #97D2EC;
+    height: 555px;
+    text-align: left;
+    margin-top:0px;
+ left:0px;
+    padding:40px;
+    padding-bottom: 20px;
+    max-height: 500px;
+    max-width: calc(100vw - 460px);
+    overflow-y:scroll ;
+}
+.Nbody3{
+    display: none;
+    width: calc(100vw - 380px);
+    position: absolute;
+    background-color: #97D2EC;
+    height: 555px;
+    text-align: left;
+    margin-top:0px;
+ left:0px;
+    padding:40px;
+    padding-left: 13%;
+    padding-bottom: 20px;
+    max-height: 500px;
+    max-width: calc(100vw - 460px);
+    overflow-y:scroll ;
+}
+.circle{
+height:155px;
+width: 155px;
+font-size: xx-large;
+color: goldenrod;
+margin-top: 200px;
+border-radius: 77px;
+background-color: transparent;
+cursor: pointer;
+}
+.circles{
+    height:60px;
+    width: 60px;
+    font-size: small;
+    color: goldenrod;
+    border-radius: 30px;
+    background-color: transparent;
+    cursor: pointer;
+    }
+
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+.chngbutton{
+    position: fixed;
+    z-index: 1;
+    top:90px;
+    right:380px;
+}
+canvas{
+    border:1px solid red;
+}
