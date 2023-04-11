@@ -6,7 +6,6 @@ import Details from './components/Details'
 import Networks from './components/Network'
 import './App.css';
 import { Avatar, Button, Grid, Link, Paper, Typography } from '@mui/material';
-import { width } from '@mui/system';
 import Logo from './logo.png';
 var text="</>";
 
@@ -16,7 +15,7 @@ class App extends React.Component{
   valueapp=1;
   constructor(props){
     super(props);
-    this.state={apis:1};//this.state={apiResponse:"",apiResponse1:""};
+    this.state={apis:1, page:0};//this.state={apiResponse:"",apiResponse1:""};
   }
   screen1(){
     document.getElementsByClassName('Aps')[0].style.display="Inline";
@@ -60,16 +59,16 @@ return (
             <Avatar src={Logo} sx={{ marginLeft: '20px',width: 70, height: 70 }} />
           </Grid>
           <Grid item xs={2}>
-            <Button variant="contained">Network</Button>
+            <Button variant="contained" onClick={()=>{this.setState({page:0})}} >Network</Button>
           </Grid>
           <Grid item xs={2}>
-            <Button variant="contained">Container</Button>
+            <Button variant="contained" onClick={()=>{this.setState({page:1})}} >Container</Button>
           </Grid>
           <Grid item xs={2}>
-            <Button variant="contained">Pull Image</Button>
+            <Button variant="contained" onClick={()=>{this.setState({page:2})}} >Pull Image</Button>
           </Grid>
           <Grid item xs={2}>
-            <Button variant="contained">Image Details</Button>
+            <Button variant="contained" onClick={()=>{this.setState({page:3})}} >Image Details</Button>
           </Grid>
           <Grid item xs={2}>
           <Typography> <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">Download Backend</Link> </Typography>
@@ -77,12 +76,12 @@ return (
         </Grid>
       </Paper>
     <Paper>
-     <Networks/>
-     <Container/>
-     <Image/>
-     <Details/>
-     <Navbar/>
+     {this.state.page === 0 && <Networks/>}
+     {this.state.page === 1 && <Container/> }
+     {this.state.page === 2 && <Image/> }
+     {this.state.page === 3 && <Details/> }
      </Paper>
+     <Navbar/>
       <button className="compiler" onClick={event =>{this.screen1();}}>{text}</button>
      <div className="Aps">
       <div className="contentbox"><pre className="content">{content}</pre></div>
