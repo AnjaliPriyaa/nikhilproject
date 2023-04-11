@@ -1,8 +1,9 @@
+import { Button, Grid, Popover, Typography } from '@mui/material';
 import React from 'react';
 class Navbar extends React.Component{
   constructor(props){
     super(props);
-    this.state={apiResponse:""};//this.state={apiResponse:"",apiResponse1:""};
+    this.state={apiResponse:"",anchorEl:null};
   }
   callAPI(){
     fetch("http://localhost:9000/testAPI")
@@ -30,7 +31,7 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     this.setState({apiResponse:<pre className='present'>{table}</pre>})
+     this.setState({apiResponse:table})
   });
   }
   containerls(){
@@ -43,7 +44,7 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     this.setState({apiResponse:<pre className='present'>{table}</pre>})
+     this.setState({apiResponse:table})
   });//lis=<b>CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMESss</b>;});
     
   }
@@ -57,27 +58,40 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     this.setState({apiResponse:<pre className='present'>{table}</pre>})
+     this.setState({apiResponse:table})
   });
   }
   componentWillMount(){
     this.callAPI();
   }
+
   
 render(){
   return (
-    <div className="Navbar">
-      <br/>
-       {this.state.apiResponse}<br/>
-       {/* <br/><br/><br/><br/><br/><br/><br/><br/> break  */}
-       <div className="buttons">
-       <button onClick={event =>{this.callAPI();}} >callAPI</button>
-       <button onClick={event =>{this.callVersion();}} >version</button>
-       <button onClick={event =>{this.containerls();}} >containerls</button>
-       <button onClick={event =>{this.volumels();}} >volumels</button>
-       <button onClick={event =>{this.imagels();}} >imagels</button>
-       <button onClick={event =>{this.setState({apiResponse:"click"})}} >version</button>
-       </div>
+    <div style={{position: 'absolute', bottom: 0, width: '100%'}}>
+          <Popover
+            open={Boolean(this.state.anchorEl)}
+            anchorEl={this.state.anchorEl}
+            onClose={()=>this.setState({anchorEl: null})}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+          >
+            <Typography sx={{ p: 2 }}>{this.state.apiResponse}</Typography>
+          </Popover>
+          <div>
+          <Button onClick={event =>{this.callAPI();this.setState({anchorEl:event.currentTarget});}} >callAPI</Button>
+          <Button onClick={event =>{this.callVersion();this.setState({anchorEl:event.currentTarget});}} >version</Button>
+          <Button onClick={event =>{this.containerls();this.setState({anchorEl:event.currentTarget});}} >containers</Button>
+          <Button onClick={event =>{this.volumels();this.setState({anchorEl:event.currentTarget});}} >volumes</Button>
+          <Button onClick={event =>{this.imagels();this.setState({anchorEl:event.currentTarget});}} >images</Button>
+          <Button onClick={event =>{this.setState({apiResponse:"click"});this.setState({anchorEl:event.currentTarget});}} >version</Button>
+          </div>
        </div>
     
   );
