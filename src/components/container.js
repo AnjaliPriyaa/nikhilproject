@@ -12,13 +12,11 @@ import Containerimage from '../Containerimage.png';
 class container extends React.Component{
   constructor(props){
     super(props);
-    this.state={apiResponse:""};//this.state={apiResponse:"",apiResponse1:""};
+    this.state={apiResponse:"", data:{ name:null , image:null , tag:null }};//this.state={apiResponse:"",apiResponse1:""};
   }
   createcontainer(){
-    var name=document.getElementById('name').value;
-    var image=document.getElementById('image').value;
-    var tag=document.getElementById('tag').value;
-    fetch(`http://localhost:9000/createContainers-${name}-${image}-${tag}`)
+    console.log(this.state.data);
+    fetch(`http://localhost:9000/createContainers-${this.state.data.name}-${this.state.data.image}-${this.state.data.tag}`)
     .then(res=>res.text())
     .then(res=>this.setState({apiResponse:res.replace(/\\t/gi,' ').replace(/\"/gi,'').replace(/\\n/gi, '')}));//.then(res=>this.setState({apiResponse1:res.replace(/\\t/gi, '   ')}));
   }
@@ -31,25 +29,30 @@ render(){
     <div className="container" style={{ display: 'inline-block'}}>
     <Card sx={{ maxWidth: 345 }}>
     <CardMedia
-      sx={{ height: 140 }}
+      component="img"
+      height={130}
+      sx={{objectFit: "contain" }}
       image={Containerimage}
       title="container"
     />
-    <CardContent>
+    <CardContent sx={{marginTop:'-7.25vh'}}>
     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 2 }} >
     <Grid item xs={2}>
     <h1  className='ak1'>Create on the go, right from a click. </h1>
     </Grid>
     <Grid item xs={2}>
-    <TextField id="outlined-basic" label="Container Name" variant="outlined" placeholder='(Optional)' />
+    <TextField id="outlined-basic" label="Container Name" variant="outlined" 
+      placeholder='(Optional)' onChange={(event)=>this.setState({data:{...this.state.data, name:event.target.value}})}/>
     </Grid>
    
     <Grid item xs={2}>
-    <TextField id="outlined-basic" label="Image Name" variant="outlined" placeholder='Image Name(Required)' />
+    <TextField id="outlined-basic" label="Image Name" variant="outlined" 
+      placeholder='Image Name(Required)' onChange={(event)=>this.setState({data:{...this.state.data, image:event.target.value}})} />
     </Grid>
     <Grid item xs={2}>
     
-    <TextField id="outlined-basic" label="Tag Name" variant="outlined" placeholder='Tag Name(Optional)' />
+    <TextField id="outlined-basic" label="Tag Name" variant="outlined" 
+    placeholder='Tag Name(Optional)' onChange={(event)=>this.setState({data:{...this.state.data, tag:event.target.value}})} />
     </Grid>
     <Grid item xs={2} >
       <Button variant="contained" onClick={event =>{this.createcontainer();}}>Create Container</Button>
@@ -58,14 +61,6 @@ render(){
     <p>{this.state.apiResponse}</p> 
     </Grid>
     </Grid>
-
-   
-    
-
-       <input type="text" className='in1' id="name" placeholder='Container Name(Optional)'></input>
-       <input type="text"  className='in1' id="image" placeholder='Image Name(Required)'></input>
-       <input type="text" className='in1' id="tag" placeholder='Tag Name(Optional)'></input>
-       
     </CardContent>
   </Card>
   </div>

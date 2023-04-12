@@ -33,9 +33,9 @@ const Compiler = (props) =>{
   }
   return (
     <div>
-       <Paper sx={{backgroundColor: 'black',height: '700px'}}>
+       <Paper sx={{backgroundColor: 'black'}}>
         <div className="contentbox"><pre className="content">{content}</pre></div>
-        <input className="compilertext" style={{zIndex:'9999'}} onKeyDown={(e)=>{if(e.keyCode == 13)solve();}}></input>
+        <input className="compilertext" style={{zIndex:'9999', width:'100%'}} onKeyDown={(e)=>{if(e.keyCode == 13)solve();}}></input>
        </Paper> 
     </div>
   );
@@ -108,7 +108,7 @@ return (
           </Grid>
         </Grid>
       </Paper>
-    <Paper sx={{height:'85vh'}}>
+    <Paper sx={{height:'85vh', padding: 5}}>
      {this.state.page === 0 && <Networks/>}
      {this.state.page === 1 && <Container/> }
      {this.state.page === 2 && <Image/> }

@@ -38,27 +38,13 @@
   overflow-y: scroll;
   background-color: black;
 }
-.compilertext{
-  position: fixed;
-  bottom:0px;
-  resize: none;
-  height: 40px;
-  width: 100vw;
-  left: 0px;
-}
 .content{
   text-align: left;
   color: white;
 }
 .contentbox{
-  position: fixed;
-  padding: 10px;
-  box-sizing: border-box;
-  bottom:45px;
-  left:0px;
-  width:100vw;
-  height:fit-content;
-  max-height:700px;
-  overflow-y: scroll;
+  height:73vh;
+  overflow-y: auto;
+  width: 100%;
 
 }
