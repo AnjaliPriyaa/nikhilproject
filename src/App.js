@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import Navbar from './components/Navbar'
-import Container from './components/container'
-import Image from './components/ImagePull'
-import Details from './components/Details'
-import Networks from './components/Network'
+import React from 'react';
+import Navbar from './components/Navbar';
+import Container from './components/container';
+import Image from './components/ImagePull';
+import Details from './components/Details';
+import Networks from './components/Network';
+import BackgroundImage from './BackgroundImage.png';
 import './App.css';
-import { Avatar, Button, Grid, Link, Paper, Typography } from '@mui/material';
+import { Avatar, Box, Button, Grid, Link, Paper, Typography } from '@mui/material';
 import Logo from './logo.png';
-var text="</>";
+// var text="</>";
 
 var content;
 const Compiler = (props) =>{
@@ -35,7 +36,7 @@ const Compiler = (props) =>{
     <div>
        <Paper sx={{backgroundColor: 'black'}}>
         <div className="contentbox"><pre className="content">{content}</pre></div>
-        <input className="compilertext" style={{zIndex:'9999', width:'100%'}} onKeyDown={(e)=>{if(e.keyCode == 13)solve();}}></input>
+        <input className="compilertext" style={{zIndex:'-1', width:'100%'}} onKeyDown={(e)=>{if(e.keyCode == 13)solve();}}></input>
        </Paper> 
     </div>
   );
@@ -79,12 +80,12 @@ class App extends React.Component{
     
   }
   
-render(){
-  
+render(){  
 return (
-    <div className="App">
-      <Paper sx={{height: '12vh', width: '100%'}}>
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 14 }} sx={{paddingTop: '10px'}}>
+
+    <Box sx={{padding: 5}}>
+    <img src={BackgroundImage} />
+    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 14 }} sx={{paddingTop: '10px'}}>
           <Grid item xs={2}>
             <Avatar src={Logo} sx={{ marginLeft: '20px',width: 70, height: 70 }} />
           </Grid>
@@ -107,16 +108,14 @@ return (
           <Typography> <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">Download Backend</Link> </Typography>
           </Grid>
         </Grid>
-      </Paper>
-    <Paper sx={{height:'85vh', padding: 5}}>
      {this.state.page === 0 && <Networks/>}
      {this.state.page === 1 && <Container/> }
      {this.state.page === 2 && <Image/> }
      {this.state.page === 3 && <Details/> }
      {this.state.page ===4 && <Compiler /> }
-     </Paper>
      <Navbar/>
-      </div>
+     </Box>
+ 
   );
 
 
