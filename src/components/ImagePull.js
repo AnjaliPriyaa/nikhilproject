@@ -9,12 +9,10 @@ import Grid from '@mui/material/Grid';
 class ImagePull extends React.Component{
   constructor(props){
     super(props);
-    this.state={apiResponse:""};//this.state={apiResponse:"",apiResponse1:""};
+    this.state={apiResponse:"", data:{image:null, tag:null}};//this.state={apiResponse:"",apiResponse1:""};
   }
   PullImage(){
-    var image=document.getElementById('pullimage').value;
-    var tag=document.getElementById('pulltag').value;
-    fetch(`http://localhost:9000/PullImg-${image}-${tag}`)
+    fetch(`http://localhost:9000/PullImg-${this.state.data.image}-${this.state.data.tag}`)
     .then(res=>res.text())
     .then(res=>this.setState({apiResponse:res.replace(/\\t/gi,' ').replace(/\"/gi,'').replace(/\\n/gi, '')}));//.then(res=>this.setState({apiResponse1:res.replace(/\\t/gi, '   ')}));
   }
@@ -29,14 +27,16 @@ render(){
     <CardContent>
     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 2 }} >
     <Grid item xs={2}>
-    <h1 className='ak3'>PuLL Image </h1>
+    <h1> Pull Image </h1>
     </Grid>
     <Grid item xs={2}>
-    <TextField id="outlined-basic" label="Image Name" variant="outlined" placeholder='Image Name(Required)' />
+    <TextField id="outlined-basic" label="Image Name" variant="outlined" 
+      placeholder='Image Name(Required)'  onChange={(event)=>this.setState({data:{...this.state.data, image:event.target.value}})}/>
     </Grid>
     <Grid item xs={2}>
     
-    <TextField id="outlined-basic" label="Tag Name" variant="outlined" placeholder='Tag Name(Optional)' />
+    <TextField id="outlined-basic" label="Tag Name" variant="outlined" 
+      placeholder='Tag Name(Optional)'  onChange={(event)=>this.setState({data:{...this.state.data, tag:event.target.value}})}/>
     </Grid>
     <Grid item xs={2} >
       <Button variant="contained"onClick={event =>{this.PullImage();}} >Submit To Pull Image</Button>
@@ -45,10 +45,6 @@ render(){
     <p>{this.state.apiResponse}</p> 
     </Grid>
     </Grid>
-   
-    <input type="text" className='in1' id="pullimage" placeholder='Image Name(Required)'></input>
-       <input type="text" className='in1' id="pulltag" placeholder='Tag Name(Optional)'></input><br/>
-
     </CardContent>
 
  

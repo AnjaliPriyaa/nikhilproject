@@ -9,12 +9,10 @@ import TextField from '@mui/material/TextField';
 class Details extends React.Component{
   constructor(props){
     super(props);
-    this.state={apiResponse:""};//this.state={apiResponse:"",apiResponse1:""};
+    this.state={apiResponse:"", data:{image:null, tag:null}};//this.state={apiResponse:"",apiResponse1:""};
   }
   PullImage(){
-    var image=document.getElementById('detailimage').value;
-    var tag=document.getElementById('detailtag').value;
-    fetch(`http://localhost:9000/DetailsImg-${image}-${tag}`)
+    fetch(`http://localhost:9000/DetailsImg-${this.state.data.image}-${this.state.data.tag}`)
     .then(res=>res.text())
     .then(res=>this.setState({apiResponse:res.replace(/\\t/gi,' ').replace(/\"/gi,'').replace(/\\n/gi, " ")}));//.then(res=>this.setState({apiResponse1:res.replace(/\\t/gi, '   ')}));
   }
@@ -32,10 +30,12 @@ render(){
     <h1 className='ak2'>Image Details</h1>
     </Grid>
     <Grid item xs={2}>
-    <TextField id="outlined-basic" label="Image Name" variant="outlined" placeholder='Image Name(Required)' />
+    <TextField id="outlined-basic" label="Image Name" variant="outlined" 
+      placeholder='Image Name(Required)' onChange={(event)=>this.setState({data:{...this.state.data, image:event.target.value}})}/>
     </Grid>
     <Grid item xs={2}>
-    <TextField id="outlined-basic" label="Tag Name" variant="outlined" placeholder='Tag Name(Optional)' />
+    <TextField id="outlined-basic" label="Tag Name" variant="outlined" 
+      placeholder='Tag Name(Optional)' onChange={(event)=>this.setState({data:{...this.state.data, tag:event.target.value}})}/>
     </Grid>
     <Grid item xs={2} >
       <Button variant="contained" onClick={event =>{this.PullImage();}} style={{}}>Submit for Details</Button>
@@ -44,10 +44,6 @@ render(){
     <p>{this.state.apiResponse}</p> 
     </Grid>
     </Grid>
-   
-    <input type="text" className='in1' id="detailimage" placeholder='Image Name(Required)'></input>
-       <input type="text" id="detailtag" className='in1' placeholder='Tag Name(Optional)'></input><br/>
-
     </CardContent>
 
 
