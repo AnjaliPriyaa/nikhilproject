@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
+import { Dialog } from '@mui/material';
 
 
 class ImagePull extends React.Component{
@@ -22,7 +23,7 @@ class ImagePull extends React.Component{
   
 render(){
   return (
-    <div className="ImagePull" style={{ display: 'inline-block'}}>
+    <Dialog onClose={this.props.handleClose} open={this.props.open}>
     <Card sx={{ maxWidth: 345}}>
     <CardContent>
     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 2 }} >
@@ -49,7 +50,7 @@ render(){
 
  
     </Card>
-  </div>
+  </Dialog>
        
     
   );

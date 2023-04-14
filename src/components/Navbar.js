@@ -1,16 +1,16 @@
-import { Button, Grid, Popover, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import React from 'react';
 class Navbar extends React.Component{
   constructor(props){
     super(props);
-    this.state={apiResponse:"",anchorEl:null};
+    this.state={api:'', version:'', volumes: '', containers: '',images: '', anchorEl:null};
   }
   callAPI(){
     fetch("http://localhost:9000/testAPI")
     .then(res=>res.text())
     .then(res=>this.setState({apiResponse:res}))
      .catch((error) => {
-      this.setState({apiResponse:"Backend server not working"});
+      this.setState({api:"Backend server not working"});
   });
   }
   callVersion(){
@@ -18,7 +18,7 @@ class Navbar extends React.Component{
     .then(res=>res.text())
     .then(res=>this.setState({apiResponse:res.replace(/\\n/gi,"").replace(/\"/gi,"")}))
     .catch((error) => {
-      this.setState({apiResponse:"Docker not installed"});
+      this.setState({version:"Docker not installed"});
   });
   }
   volumels(){
@@ -31,7 +31,7 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     this.setState({apiResponse:table})
+     this.setState({volumes:table})
   });
   }
   containerls(){
@@ -44,7 +44,7 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     this.setState({apiResponse:table})
+     this.setState({containers:table})
   });//lis=<b>CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMESss</b>;});
     
   }
@@ -58,38 +58,35 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     this.setState({apiResponse:table})
+     this.setState({images:table})
   });
   }
   componentWillMount(){
     this.callAPI();
+    this.callVersion()
+    this.containerls()
+    this.volumels()
+    this.imagels()
   }
 
   
 render(){
   return (
-    <div style={{position: 'absolute', bottom: 0, width: '100%'}}>
-          <Popover
-            open={Boolean(this.state.anchorEl)}
-            anchorEl={this.state.anchorEl}
-            onClose={()=>this.setState({anchorEl: null})}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'center',
-            }}
-            transformOrigin={{
-              vertical: 'bottom',
-              horizontal: 'center',
-            }}
-          >
-            <Typography sx={{ p: 2 }}>{this.state.apiResponse}</Typography>
-          </Popover>
-          <Button onClick={event =>{this.callAPI();this.setState({anchorEl:event.currentTarget});}} >callAPI</Button>
-          <Button onClick={event =>{this.callVersion();this.setState({anchorEl:event.currentTarget});}} >version</Button>
-          <Button onClick={event =>{this.containerls();this.setState({anchorEl:event.currentTarget});}} >containers</Button>
-          <Button onClick={event =>{this.volumels();this.setState({anchorEl:event.currentTarget});}} >volumes</Button>
-          <Button onClick={event =>{this.imagels();this.setState({anchorEl:event.currentTarget});}} >images</Button>
-          <Button onClick={event =>{this.setState({apiResponse:"click"});this.setState({anchorEl:event.currentTarget});}} >version</Button>
+    <div style={{position: 'absolute', bottom: 0, paddingLeft: 20, paddingBottom: 20 ,display: 'flex', alignItems: 'flex-start'}}>
+          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+          <Typography>callAPI</Typography>
+          <Typography>version</Typography>
+          <Typography>containers &nbsp; &nbsp; &nbsp; {this.state.containers}</Typography>
+          <Typography>volumes</Typography>
+          <Typography>images</Typography>
+          </div>
+          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+          <Typography>{this.state.api}</Typography>
+          <Typography>{this.state.version}</Typography>
+          <Typography>{this.state.containers}</Typography>
+          <Typography>{this.state.volumes}</Typography>
+          <Typography>{this.state.images}</Typography>
+          </div>
        </div>
     
   );

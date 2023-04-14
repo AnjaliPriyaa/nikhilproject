@@ -6,13 +6,21 @@ import Details from './components/Details';
 import Networks from './components/Network';
 import BackgroundImage from './BackgroundImage.png';
 import './App.css';
-import { Avatar, Box, Button, Grid, Link, Paper, Typography } from '@mui/material';
-import Logo from './logo.png';
+import { Avatar, Box, Button, Dialog, Grid, Link, Paper, Typography } from '@mui/material';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
+import InfoIcon from '@mui/icons-material/Info';
+import SearchIcon from '@mui/icons-material/Search';
+import CodeIcon from '@mui/icons-material/Code';
+import Logo from './docker-logo.png';
 // var text="</>";
 
 var content;
-const Compiler = (props) =>{
-  const solve = () =>{
+class Compiler extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  solve() {
     fetch("http://localhost:9000/cmd?"+document.getElementsByClassName('compilertext')[0].value)
     .then(res=>res.text())
     .then(res=>{
@@ -32,14 +40,24 @@ const Compiler = (props) =>{
     })
     
   }
+  render(){  
   return (
-    <div>
-       <Paper sx={{backgroundColor: 'black'}}>
-        <div className="contentbox"><pre className="content">{content}</pre></div>
-        <input className="compilertext" style={{zIndex:'-1', width:'100%'}} onKeyDown={(e)=>{if(e.keyCode == 13)solve();}}></input>
-       </Paper> 
-    </div>
+       <Dialog open={this.props.open} onClose={this.props.handleClose} 
+       sx={{
+        "& .MuiDialog-container": {
+          "& .MuiPaper-root": {
+            width: "100%",
+            maxWidth: "70vw",  // Set your width here
+          },
+        },
+      }}>
+        <div style={{backgroundColor: 'black', width: '70vw', overflow: 'hidden'}}>
+          <div className="contentbox"><pre className="content">{content}</pre></div>
+          <input className="compilertext" style={{zIndex:'-1', height: '4vh',width:'100%'}} onKeyDown={(e)=>{if(e.keyCode == 13)this.solve();}} />
+        </div>
+       </Dialog> 
   );
+  }
 }
 class App extends React.Component{
   
@@ -82,41 +100,24 @@ class App extends React.Component{
   
 render(){  
 return (
-  <div className='App'>
-    <Box sx={{height: '12vh',backgroundColor: '#edf3f8'}}>
-    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 14 }} sx={{paddingTop: '10px'}}>
-          <Grid item xs={2}>
-            <Avatar src={Logo} sx={{ marginLeft: '20px',width: 70, height: 70 }} />
-          </Grid>
-          <Grid item xs={2}>
-            <Button onClick={()=>{this.setState({page:0})}} >Network</Button>
-          </Grid>
-          <Grid item xs={2}>
-            <Button onClick={()=>{this.setState({page:1})}} >Container</Button>
-          </Grid>
-          <Grid item xs={2}>
-            <Button onClick={()=>{this.setState({page:2})}} >Pull Image</Button>
-          </Grid>
-          <Grid item xs={2}>
-            <Button onClick={()=>{this.setState({page:3})}} >Image Details</Button>
-          </Grid>
-          <Grid item xs={2}>
-            <Button onClick={()=>{this.setState({page:4})}} >Open Cli</Button>
-          </Grid>
-          <Grid item xs={2}>
-          <Typography> <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">Download Backend</Link> </Typography>
-          </Grid>
-        </Grid>
+ <Box>
+    <Avatar src={Logo} sx={{ marginLeft: '20px',width: 70, height: 70, cursor: 'pointer', marginTop:'1vh' }} onClick={()=>{this.setState({page:0})}} />
+    <div style={{position: 'absolute', display: 'flex', flexDirection: 'column' ,right: '3vw', bottom: '3vh'}}>
+      <AddCircleIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:1})}}/>
+      <ArrowDropDownCircleIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:2})}}/>
+      <InfoIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:3})}}/>
+      <SearchIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:4})}}/>
+      <CodeIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:4})}}/>
+    </div>
+    <Box sx={{height:"100%", position: 'absolute', top: 0, left: 0, width: '100%', zIndex: '-1'}}>
+      <Networks/>
+      <Container open={this.state.page === 1} handleClose={()=> this.setState({page:0})}/>
+      <Image open={this.state.page === 2} handleClose={()=> this.setState({page:0})}/>
+      <Details open={this.state.page === 3} handleClose={()=> this.setState({page:0})}/>
+      <Compiler open={this.state.page === 4} handleClose={()=> this.setState({page:0})}/>
     </Box>
-    <Box sx={{height:"73vh", padding:5, overflowY: 'scroll'}}>
-     {this.state.page === 0 && <Networks/>}
-     {this.state.page === 1 && <Container/> }
-     {this.state.page === 2 && <Image/> }
-     {this.state.page === 3 && <Details/> }
-     {this.state.page === 4 && <Compiler /> }
-     </Box>
      <Navbar/>
-     </div>
+  </Box>
   );
 
 

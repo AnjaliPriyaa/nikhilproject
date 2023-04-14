@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Containerimage from '../Containerimage.png';
+import { Dialog } from '@mui/material';
 
 
 class container extends React.Component{
@@ -26,7 +27,7 @@ class container extends React.Component{
   
 render(){
   return (
-    <div className="container" style={{ display: 'inline-block'}}>
+    <Dialog onClose={this.props.handleClose} open={this.props.open}>
     <Card sx={{ maxWidth: 345 }}>
     <CardMedia
       component="img"
@@ -63,7 +64,7 @@ render(){
     </Grid>
     </CardContent>
   </Card>
-  </div>
+  </Dialog>
 
     
   );

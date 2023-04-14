@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { Dialog } from '@mui/material';
 
 class Details extends React.Component{
   constructor(props){
@@ -22,7 +23,7 @@ class Details extends React.Component{
   
 render(){
   return (
-    <div className="container" style={{ display: 'inline-block' }}>
+    <Dialog onClose={this.props.handleClose} open={this.props.open}>
     <Card sx={{ maxWidth: 345}}>
     <CardContent>
     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 2 }} >
@@ -45,12 +46,8 @@ render(){
     </Grid>
     </Grid>
     </CardContent>
-
-
- 
-
   </Card>
-  </div>
+  </Dialog>
 
     
   );
