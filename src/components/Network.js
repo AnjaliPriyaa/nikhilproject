@@ -115,7 +115,7 @@ else if(this.val===3){
     <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
       <pre className="Nbody2">
       <Button variant="text" onClick={event =>{this.Download();}}>Download</Button>
-        <canvas id="myCanvas" width="1000" height="569">.</canvas>
+        <canvas id="myCanvas" width="800" height="500" >.</canvas>
       </pre>  
     </Box>
 

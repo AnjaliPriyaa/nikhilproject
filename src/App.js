@@ -96,7 +96,7 @@ class App extends React.Component{
   
 render(){  
 return (
- <Box sx={{background:`url("${BackgroundImage}")`, overflowY:'hidden'}}>
+ <Box sx={{background:`url("${BackgroundImage}")`, overflowY:'hidden',  boxShadow: '4px 2px 2px lightblue'}}>
     <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 6, md: 14 }} sx={{paddingTop: '10px'}}>
           <Grid item xs={1.5}>
           <Avatar src={Logo} sx={{marginLeft: '20px', width: 56, height: 56  }} />
