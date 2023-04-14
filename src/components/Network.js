@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, Box, Button} from '@mui/material';
 var container;
 var cn;
 var sources;
@@ -90,7 +90,7 @@ render(){
         <div style={{height:'100%', display:'flex',justifyContent:'center', alignItems:'center', marginTop: '-70px'}}>
        <div className="Nbody1">
        
-       <Typography sx={{border: '2px solid black', borderRadius: '20vh', height:70, width: 70, cursor: 'pointer',padding:8, fontSize:'1.2rem'}} onClick={event =>{this.Network();}}>Search Network</Typography>
+       <Typography sx={{border: '2px solid #1976d2 ', borderRadius: '20vh', height:70, width: 70, cursor: 'pointer',padding:8, fontSize:'1.2rem',color:'#1976d2'}} onClick={event =>{this.Network();}}>Search Network</Typography>
        </div></div>
   );
  else if(this.val===2){
@@ -112,8 +112,13 @@ else if(this.val===3){
   return (
     <div className="Network" onMouseEnter={event =>{this.soln();}}>
  
- 
-  <pre className="Nbody2"><button className='chngbutton'  onClick={event =>{this.Download();}}>download</button><canvas id="myCanvas" width="1000" height="569">.</canvas></pre>
+    <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+      <pre className="Nbody2">
+      <Button variant="text" onClick={event =>{this.Download();}}>Download</Button>
+        <canvas id="myCanvas" width="1000" height="569">.</canvas>
+      </pre>  
+    </Box>
+
   
  </div>
   );
