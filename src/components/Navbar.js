@@ -72,7 +72,7 @@ class Navbar extends React.Component{
   
 render(){
   return (
-    <div style={{position: 'absolute', bottom: 0, paddingLeft: 30, paddingBottom: 20 ,display: 'flex', alignItems: 'flex-start'}}>
+    <div style={{position: 'absolute', bottom: 0, paddingLeft: 30, paddingBottom: 20 ,display: 'flex',alignItems: 'flex-start'}}>
           <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
           <Typography>callAPI</Typography>
           <Typography>version</Typography>
