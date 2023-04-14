@@ -108,22 +108,22 @@ return (
           <Avatar src={Logo} sx={{marginLeft: '20px', width: 56, height: 56  }} />
           </Grid>
           <Grid item xs={1.75}>
-            <Button variant="contained" onClick={()=>{this.setState({page:0})}} >Network</Button>
+            <Button  onClick={()=>{this.setState({page:0})}} >Network</Button>
           </Grid>
           <Grid item xs={1.75}>
-            <Button variant="contained" onClick={()=>{this.setState({page:1})}} >Container</Button>
+            <Button  onClick={()=>{this.setState({page:1})}} >Container</Button>
           </Grid>
           <Grid item xs={1.75}>
-            <Button variant="contained" onClick={()=>{this.setState({page:2})}} >Pull Image</Button>
+            <Button  onClick={()=>{this.setState({page:2})}} >Pull Image</Button>
           </Grid>
           <Grid item xs={1.75}>
-            <Button variant="contained" onClick={()=>{this.setState({page:3})}} >Image Details</Button>
+            <Button  onClick={()=>{this.setState({page:3})}} >Image Details</Button>
           </Grid>
           <Grid item xs={1.75}>
-            <Button variant="contained" onClick={()=>{this.setState({page:4})}} >Share Image</Button>
+            <Button  onClick={()=>{this.setState({page:4})}} >Share Image</Button>
           </Grid>
           <Grid item xs={1.75}>
-            <Button variant="contained" onClick={()=>{this.setState({page:5})}} >Open Cli</Button>
+            <Button  onClick={()=>{this.setState({page:5})}} >Open Cli</Button>
           </Grid>
           <Grid item xs={1.75}>
           <Typography> <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">Download Backend</Link> </Typography>
