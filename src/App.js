@@ -82,40 +82,41 @@ class App extends React.Component{
   
 render(){  
 return (
-
-    <Box sx={{padding: 5}}>
-    <img src={BackgroundImage} />
+  <div className='App'>
+    <Box sx={{height: '12vh',backgroundColor: '#edf3f8'}}>
     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 14 }} sx={{paddingTop: '10px'}}>
           <Grid item xs={2}>
             <Avatar src={Logo} sx={{ marginLeft: '20px',width: 70, height: 70 }} />
           </Grid>
           <Grid item xs={2}>
-            <Button variant="contained" onClick={()=>{this.setState({page:0})}} >Network</Button>
+            <Button onClick={()=>{this.setState({page:0})}} >Network</Button>
           </Grid>
           <Grid item xs={2}>
-            <Button variant="contained" onClick={()=>{this.setState({page:1})}} >Container</Button>
+            <Button onClick={()=>{this.setState({page:1})}} >Container</Button>
           </Grid>
           <Grid item xs={2}>
-            <Button variant="contained" onClick={()=>{this.setState({page:2})}} >Pull Image</Button>
+            <Button onClick={()=>{this.setState({page:2})}} >Pull Image</Button>
           </Grid>
           <Grid item xs={2}>
-            <Button variant="contained" onClick={()=>{this.setState({page:3})}} >Image Details</Button>
+            <Button onClick={()=>{this.setState({page:3})}} >Image Details</Button>
           </Grid>
           <Grid item xs={2}>
-            <Button variant="contained" onClick={()=>{this.setState({page:4})}} >Open Cli</Button>
+            <Button onClick={()=>{this.setState({page:4})}} >Open Cli</Button>
           </Grid>
           <Grid item xs={2}>
           <Typography> <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">Download Backend</Link> </Typography>
           </Grid>
         </Grid>
+    </Box>
+    <Box sx={{height:"73vh", padding:5, overflowY: 'scroll'}}>
      {this.state.page === 0 && <Networks/>}
      {this.state.page === 1 && <Container/> }
      {this.state.page === 2 && <Image/> }
      {this.state.page === 3 && <Details/> }
-     {this.state.page ===4 && <Compiler /> }
-     <Navbar/>
+     {this.state.page === 4 && <Compiler /> }
      </Box>
- 
+     <Navbar/>
+     </div>
   );
 
 
