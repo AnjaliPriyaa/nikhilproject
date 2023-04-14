@@ -47,7 +47,7 @@ class Network extends React.Component{
     document.getElementsByClassName('Nbody2')[0].style.display="none";
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
-    ctx.fillStyle = "yellow";
+    ctx.fillStyle = "#1976d2";
     ctx.fillRect(0,0,740,569);
     ctx.beginPath();
     ctx.arc(390, 284, 50, 0, 2 * Math.PI);

@@ -28,7 +28,7 @@ class container extends React.Component{
 render(){
   return (
     <Dialog onClose={this.props.handleClose} open={this.props.open}>
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: 375 }}>
     <CardMedia
       component="img"
       height={130}
@@ -37,7 +37,7 @@ render(){
       title="container"
     />
     <CardContent sx={{marginTop:'-7.25vh'}}>
-    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 2 }} >
+    <Grid sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}} container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 2 }} >
     <Grid item xs={2}>
     <h1  className='ak1'>Create on the go, right from a click. </h1>
     </Grid>

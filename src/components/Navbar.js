@@ -31,7 +31,7 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     this.setState({apiResponse:table})
+     this.setState({apiResponse:table[0]})
   });
   }
   containerls(){
@@ -58,7 +58,7 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     this.setState({apiResponse:table[0].split('\n')})
+     this.setState({apiResponse:table[0]})
   });
   }
   componentWillMount(){
