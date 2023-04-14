@@ -44,23 +44,10 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     console.log(table)
-     const modifiedData=table[0].split('\n');
-     modifiedData[0]='CONTAINER_ID   IMAGE   COMMAND   CREATED   STATUS   PORTS   NAMES'
-     this.setState({apiResponse:modifiedData})
+     this.setState({apiResponse:table[0]})
   });//lis=<b>CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMESss</b>;});
-  [
-    "CONTAINER ID   IMAGE           COMMAND       CREATED          STATUS          PORTS     NAMES\nb56d1f3241a8   ubuntu:latest   \"/bin/bash\"   23 minutes ago   Up 23 minutes             anjalisomy\n34c07ab6f6a7   ubuntu:latest   \"/bin/bash\"   24 minutes ago   Up 23 minutes             somyanjali\n2804b86ec587   ubuntu:latest   \"/bin/bash\"   24 minutes ago   Up 23 minutes             somya\nf3c0462a28ea   ubuntu:latest   \"/bin/bash\"   3 days ago       Up 23 minutes             Anjali\n",
-    {
-        "type": "br",
-        "key": null,
-        "ref": null,
-        "props": {},
-        "_owner": null,
-        "_store": {}
-    }
-]
-  }
+}
+
   imagels(){
     fetch("http://localhost:9000/image-ls")
     .then(res=>res.text())
@@ -95,9 +82,7 @@ render(){
               horizontal: 'center',
             }}
           >
-            
-              { typeof(this.state.apiResponse) === 'object' ? this.state.apiResponse.map(value => (<tr>{value.split(' ').map((d)=><td> <Typography>{d}</Typography></td>)}</tr>)) :
-               <Typography sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>{this.state.apiResponse}</Typography>}
+               <Typography sx={{ p: 2, display: 'flex', flexDirection: 'column' }}><pre>{this.state.apiResponse}</pre></Typography>
            
 
           </Popover>
