@@ -100,7 +100,7 @@ render(){
     
 
     if(this.val===1)return (
-        <div style={{height:'100%', display:'flex',justifyContent:'center', alignItems:'center'}}>
+        <div style={{height:'100%', display:'flex',justifyContent:'center', alignItems:'center', marginTop: '-70px'}}>
        <div className="Nbody1">
        
        <Typography sx={{border: '2px solid black', borderRadius: '20vh', height:70, width: 70, cursor: 'pointer',padding:8, fontSize:'1.2rem'}} onClick={event =>{this.Network();}}>Search Network</Typography>

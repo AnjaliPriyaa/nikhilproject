@@ -115,7 +115,7 @@ return (
       <SearchIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:4})}}/>
       <CodeIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:5})}}/>
     </div>
-    <Box sx={{height:"100%", position: 'absolute', top: 0, left: 0, width: '100%', zIndex: '-1'}}>
+    <Box sx={{height:"calc(100% - 70px)", position: 'absolute', top: 70, left: 0, width: '100%', zIndex: '-1'}}>
       <Networks/>
       <Container open={this.state.page === 1} handleClose={()=> this.setState({page:0})}/>
       <Image open={this.state.page === 2} handleClose={()=> this.setState({page:0})}/>
