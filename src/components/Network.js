@@ -48,35 +48,35 @@ class Network extends React.Component{
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     ctx.fillStyle = "yellow";
-ctx.fillRect(0,0,740,569);
-ctx.beginPath();
-ctx.arc(390, 284, 50, 0, 2 * Math.PI);
-ctx.font = "15px Verdana";
-// Create gradient
-var gradient = ctx.createLinearGradient(0, 0, c.width, 0);
-gradient.addColorStop("0"," magenta");
-gradient.addColorStop("0.5", "blue");
-gradient.addColorStop("1.0", "red");
-ctx.fillStyle = gradient;
-ctx.fillText(cn,341,290);
-var x=container.length,i=0;
-var angle=360/x;
-for(i=0;i<x;i++)
-{
-ctx.moveTo(390+50*Math.cos(i*angle*3.14/180),284-50*Math.sin(i*angle*3.14/180));
-ctx.lineTo(390+160*Math.cos(i*angle*3.14/180),284-160*Math.sin(i*angle*3.14/180));
+    ctx.fillRect(0,0,740,569);
+    ctx.beginPath();
+    ctx.arc(390, 284, 50, 0, 2 * Math.PI);
+    ctx.font = "15px Verdana";
+    // Create gradient
+    var gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+    gradient.addColorStop("0"," magenta");
+    gradient.addColorStop("0.5", "blue");
+    gradient.addColorStop("1.0", "red");
+    ctx.fillStyle = gradient;
+    ctx.fillText(cn,341,290);
+    var x=container.length,i=0;
+    var angle=360/x;
+    for(i=0;i<x;i++)
+    {
+    ctx.moveTo(390+50*Math.cos(i*angle*3.14/180),284-50*Math.sin(i*angle*3.14/180));
+    ctx.lineTo(390+160*Math.cos(i*angle*3.14/180),284-160*Math.sin(i*angle*3.14/180));
 
-}
-ctx.stroke();
-for(i=0;i<x;i++)
-{
-ctx.beginPath();
-ctx.fillStyle = "red";
-ctx.font = "10px Verdana";
-ctx.fillText(container[i],352+200*Math.cos(i*angle*3.14/180),284-200*Math.sin(i*angle*3.14/180));
-ctx.arc(390+200*Math.cos(i*angle*3.14/180), 284-200*Math.sin(i*angle*3.14/180), 40, 0, 2 * Math.PI);
-ctx.stroke();
-}
+    }
+    ctx.stroke();
+    for(i=0;i<x;i++)
+    {
+    ctx.beginPath();
+    ctx.fillStyle = "red";
+    ctx.font = "10px Verdana";
+    ctx.fillText(container[i],352+200*Math.cos(i*angle*3.14/180),284-200*Math.sin(i*angle*3.14/180));
+    ctx.arc(390+200*Math.cos(i*angle*3.14/180), 284-200*Math.sin(i*angle*3.14/180), 40, 0, 2 * Math.PI);
+    ctx.stroke();
+    }
     document.getElementsByClassName('Nbody3')[0].style.display="inline-block";
   }
   solv(){

@@ -80,6 +80,7 @@ render(){
           <Typography>volumes</Typography>
           <Typography>images</Typography>
           </div>
+          <p>&nbsp; &nbsp; &nbsp; &nbsp;</p>
           <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
           <Typography>{this.state.api}</Typography>
           <Typography>{this.state.version}</Typography>

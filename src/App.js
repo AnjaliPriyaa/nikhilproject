@@ -13,6 +13,7 @@ import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
 import InfoIcon from '@mui/icons-material/Info';
 import SearchIcon from '@mui/icons-material/Search';
 import CodeIcon from '@mui/icons-material/Code';
+import DownloadIcon from '@mui/icons-material/Download';
 import Logo from './docker-logo.png';
 // var text="</>";
 
@@ -103,6 +104,10 @@ render(){
 return (
  <Box>
     <Avatar src={Logo} sx={{ marginLeft: '20px',width: 70, height: 70, cursor: 'pointer', marginTop:'1vh' }} onClick={()=>{this.setState({page:0})}} />
+     
+      <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">
+        <DownloadIcon sx={{fontSize: 50, cursor: 'pointer', position: 'absolute', display: 'flex', flexDirection: 'column' ,right: '3vw', top: '3vh'}}/>
+      </Link> 
     <div style={{position: 'absolute', display: 'flex', flexDirection: 'column' ,right: '3vw', bottom: '3vh'}}>
       <AddCircleIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:1})}}/>
       <ArrowDropDownCircleIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:2})}}/>
