@@ -44,12 +44,22 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     console.log(table[0])
+     console.log(table)
      const modifiedData=table[0].split('\n');
      modifiedData[0]='CONTAINER_ID   IMAGE   COMMAND   CREATED   STATUS   PORTS   NAMES'
      this.setState({apiResponse:modifiedData})
   });//lis=<b>CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMESss</b>;});
-    
+  [
+    "CONTAINER ID   IMAGE           COMMAND       CREATED          STATUS          PORTS     NAMES\nb56d1f3241a8   ubuntu:latest   \"/bin/bash\"   23 minutes ago   Up 23 minutes             anjalisomy\n34c07ab6f6a7   ubuntu:latest   \"/bin/bash\"   24 minutes ago   Up 23 minutes             somyanjali\n2804b86ec587   ubuntu:latest   \"/bin/bash\"   24 minutes ago   Up 23 minutes             somya\nf3c0462a28ea   ubuntu:latest   \"/bin/bash\"   3 days ago       Up 23 minutes             Anjali\n",
+    {
+        "type": "br",
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+    }
+]
   }
   imagels(){
     fetch("http://localhost:9000/image-ls")
