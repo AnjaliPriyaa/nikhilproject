@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Container from './components/container';
+import Share from './components/share';
 import Image from './components/ImagePull';
 import Details from './components/Details';
 import Networks from './components/Network';
@@ -107,14 +108,15 @@ return (
       <ArrowDropDownCircleIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:2})}}/>
       <InfoIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:3})}}/>
       <SearchIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:4})}}/>
-      <CodeIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:4})}}/>
+      <CodeIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:5})}}/>
     </div>
     <Box sx={{height:"100%", position: 'absolute', top: 0, left: 0, width: '100%', zIndex: '-1'}}>
       <Networks/>
       <Container open={this.state.page === 1} handleClose={()=> this.setState({page:0})}/>
       <Image open={this.state.page === 2} handleClose={()=> this.setState({page:0})}/>
       <Details open={this.state.page === 3} handleClose={()=> this.setState({page:0})}/>
-      <Compiler open={this.state.page === 4} handleClose={()=> this.setState({page:0})}/>
+      <Share open={this.state.page === 4} handleClose={()=> this.setState({page:0})}/>
+      <Compiler open={this.state.page === 5} handleClose={()=> this.setState({page:0})}/>
     </Box>
      <Navbar/>
   </Box>
