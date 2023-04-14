@@ -44,7 +44,9 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     this.setState({apiResponse:table})
+     const modifiedData=table[0].split('\n');
+     modifiedData[0]='CONTAINER_ID   IMAGE   COMMAND   CREATED   STATUS   PORTS   NAMES'
+     this.setState({apiResponse:modifiedData})
   });//lis=<b>CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMESss</b>;});
     
   }
@@ -58,7 +60,7 @@ class Navbar extends React.Component{
        table.push(this.state.apiResponse[i])
        table.push(<br/>)
      }
-     this.setState({apiResponse:table})
+     this.setState({apiResponse:table[0].split('\n')})
   });
   }
   componentWillMount(){
@@ -82,10 +84,11 @@ render(){
               horizontal: 'center',
             }}
           >
-            <tr>
-              { typeof(this.state.apiResponse) === Array ? this.state.data.map(value => (<td> <Typography sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>{this.state.apiResponse}</Typography></td>)) :
+            
+              {console.log(this.state.apiResponse)}
+              { typeof(this.state.apiResponse) === 'object' ? this.state.apiResponse.map(value => (<tr>{value.split(' ').map((d)=><td> <Typography>{d}</Typography></td>)}</tr>)) :
                <Typography sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>{this.state.apiResponse}</Typography>}
-            </tr>
+           
 
           </Popover>
           <div>
