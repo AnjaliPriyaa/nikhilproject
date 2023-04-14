@@ -5,7 +5,6 @@ import Share from './components/share';
 import Image from './components/ImagePull';
 import Details from './components/Details';
 import Networks from './components/Network';
-import BackgroundImage from './BackgroundImage.png';
 import './App.css';
 import { Avatar, Box, Button, Dialog, Grid, Link, Paper, Typography } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -104,7 +103,6 @@ render(){
 return (
  <Box>
     <Avatar src={Logo} sx={{ marginLeft: '20px',width: 70, height: 70, cursor: 'pointer', marginTop:'1vh' }} onClick={()=>{this.setState({page:0})}} />
-     
       <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">
         <DownloadIcon sx={{fontSize: 50, cursor: 'pointer', position: 'absolute', display: 'flex', flexDirection: 'column' ,right: '3vw', top: '3vh'}}/>
       </Link> 
