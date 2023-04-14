@@ -55,7 +55,7 @@ class Compiler extends React.Component{
       }}>
         <div style={{backgroundColor: 'black', width: '70vw', overflow: 'hidden'}}>
           <div className="contentbox"><pre className="content">{content}</pre></div>
-          <input className="compilertext" style={{zIndex:'-1', height: '4vh',width:'100%'}} onKeyDown={(e)=>{if(e.keyCode == 13)this.solve();}} />
+          <input className="compilertext" style={{zIndex:'-1', height: '4vh',width:'100%', outline: 'none'}} onKeyDown={(e)=>{if(e.keyCode == 13)this.solve();}} />
         </div>
        </Dialog> 
   );

@@ -82,7 +82,11 @@ render(){
               horizontal: 'center',
             }}
           >
-            <Typography sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>{this.state.apiResponse}</Typography>
+            <tr>
+              { typeof(this.state.apiResponse) === Array ? this.state.data.map(value => (<td> <Typography sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>{this.state.apiResponse}</Typography></td>)) :
+               <Typography sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>{this.state.apiResponse}</Typography>}
+            </tr>
+
           </Popover>
           <div>
           <Button onClick={event =>{this.callAPI();this.setState({anchorEl:event.currentTarget});}} >callAPI</Button>
