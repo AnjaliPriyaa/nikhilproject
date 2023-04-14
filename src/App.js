@@ -102,17 +102,35 @@ class App extends React.Component{
 render(){  
 return (
  <Box>
-    <Avatar src={Logo} sx={{ marginLeft: '20px',width: 70, height: 70, cursor: 'pointer', marginTop:'1vh' }} onClick={()=>{this.setState({page:0})}} />
-      <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">
-        <DownloadIcon sx={{fontSize: 50, cursor: 'pointer', position: 'absolute', display: 'flex', flexDirection: 'column' ,right: '3vw', top: '3vh'}}/>
-      </Link> 
-    <div style={{position: 'absolute', display: 'flex', flexDirection: 'column' ,right: '3vw', bottom: '3vh'}}>
-      <AddCircleIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:1})}}/>
-      <ArrowDropDownCircleIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:2})}}/>
-      <InfoIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:3})}}/>
-      <SearchIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:4})}}/>
-      <CodeIcon sx={{fontSize: 50, cursor: 'pointer'}} onClick={()=>{this.setState({page:5})}}/>
-    </div>
+    <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 6, md: 14 }} sx={{paddingTop: '10px'}}>
+          <Grid item xs={1.5}>
+          <Avatar src={Logo} sx={{marginLeft: '20px', width: 56, height: 56  }} />
+          </Grid>
+          <Grid item xs={1.5}>
+            <Button variant="contained" onClick={()=>{this.setState({page:0})}} >Network</Button>
+          </Grid>
+          <Grid item xs={1.5}>
+            <Button variant="contained" onClick={()=>{this.setState({page:0})}} >Network</Button>
+          </Grid>
+          <Grid item xs={1.5}>
+            <Button variant="contained" onClick={()=>{this.setState({page:1})}} >Container</Button>
+          </Grid>
+          <Grid item xs={1.5}>
+            <Button variant="contained" onClick={()=>{this.setState({page:2})}} >Pull Image</Button>
+          </Grid>
+          <Grid item xs={1.5}>
+            <Button variant="contained" onClick={()=>{this.setState({page:3})}} >Image Details</Button>
+          </Grid>
+          <Grid item xs={1.5}>
+            <Button variant="contained" onClick={()=>{this.setState({page:4})}} >Share Image</Button>
+          </Grid>
+          <Grid item xs={1.5}>
+            <Button variant="contained" onClick={()=>{this.setState({page:5})}} >Open Cli</Button>
+          </Grid>
+          <Grid item xs={1.5}>
+          <Typography> <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">Download Backend</Link> </Typography>
+          </Grid>
+        </Grid>
     <Box sx={{height:"calc(100% - 70px)", position: 'absolute', top: 70, left: 0, width: '100%', zIndex: '-1'}}>
       <Networks/>
       <Container open={this.state.page === 1} handleClose={()=> this.setState({page:0})}/>
