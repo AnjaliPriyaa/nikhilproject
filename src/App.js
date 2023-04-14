@@ -7,12 +7,6 @@ import Details from './components/Details';
 import Networks from './components/Network';
 import './App.css';
 import { Avatar, Box, Button, Dialog, Grid, Link, Paper, Typography } from '@mui/material';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
-import InfoIcon from '@mui/icons-material/Info';
-import SearchIcon from '@mui/icons-material/Search';
-import CodeIcon from '@mui/icons-material/Code';
-import DownloadIcon from '@mui/icons-material/Download';
 import Logo from './docker-logo.png';
 import BackgroundImage from './BackgroundImage.png';
 // var text="</>";
@@ -102,7 +96,7 @@ class App extends React.Component{
   
 render(){  
 return (
- <Box sx={{background:`url("${BackgroundImage}")`}}>
+ <Box sx={{background:`url("${BackgroundImage}")`, overflowY:'hidden'}}>
     <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 6, md: 14 }} sx={{paddingTop: '10px'}}>
           <Grid item xs={1.5}>
           <Avatar src={Logo} sx={{marginLeft: '20px', width: 56, height: 56  }} />
@@ -129,7 +123,7 @@ return (
           <Typography> <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">Download Backend</Link> </Typography>
           </Grid>
         </Grid>
-    <Box sx={{height:"calc(100% - 70px)", position: 'absolute', top: 70, left: 0, width: '100%', zIndex: '-1',background:'inherit'}}>
+    <Box sx={{height:"calc(100% - 70px)", position: 'absolute',overflowY:'hidden', top: 70, left: 0, width: '100%', zIndex: '-1',background:'inherit'}}>
       <Networks/>
       <Container open={this.state.page === 1} handleClose={()=> this.setState({page:0})}/>
       <Image open={this.state.page === 2} handleClose={()=> this.setState({page:0})}/>
