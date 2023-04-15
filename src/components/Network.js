@@ -4,7 +4,6 @@ var container;
 var cn;
 var sources;
 class Network extends React.Component{
-  val=1;
   text=-1;
   constructor(props){
     super(props);
@@ -14,7 +13,7 @@ class Network extends React.Component{
   Network(){
     fetch(`http://localhost:9000/Network`)
     .then(res=>res.text())
-    .then(res=>{this.setState({apiResponse:JSON.parse(res)});this.val=2});//.then(res=>this.setState({apiResponse1:res.replace(/\\t/gi, '   ')}));
+    .then(res=>{this.setState({apiResponse:JSON.parse(res)});this.props.handleVal(2)});//.then(res=>this.setState({apiResponse1:res.replace(/\\t/gi, '   ')}));
   }
   Neet=(event, source) =>{
    
@@ -28,7 +27,7 @@ class Network extends React.Component{
    var count=[];
    for (let key in container)count.push(container[key]["Name"]);
    container=count;
-   this.val=3;
+   this.props.handleVal(3);
 });
   }
   Download(){
@@ -44,7 +43,7 @@ class Network extends React.Component{
     var count=[];
     for (let key in container)count.push(container[key]["Name"]);
     container=count;
-    this.val=3;});
+    this.props.handleVal(3)});
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     ctx.fillStyle = "#B0DAFF";
@@ -86,14 +85,14 @@ ctx.stroke();
 render(){
     
 
-    if(this.val===1)return (
+    if(this.props.val===1)return (
         <div style={{height:'100%', display:'flex',justifyContent:'center', alignItems:'center', marginTop: '-70px'}}>
        <div className="Nbody1">
        
        <Typography sx={{border: '2px solid #1976d2 ', borderRadius: '20vh', height:70, width: 70, cursor: 'pointer',padding:8, fontSize:'1.2rem',color:'#1976d2'}} onClick={event =>{this.Network();}}>Search Network</Typography>
        </div></div>
   );
- else if(this.val===2){
+ else if(this.props.val===2){
 var lis = [];
 for (let i=0;i<this.state.apiResponse.length-1; ++i) {
     lis.push(<button  className='circles' onClick={event =>{this.Neet(event,i);}}>{this.state.apiResponse[i]}</button>);
@@ -107,7 +106,7 @@ for (let i=0;i<this.state.apiResponse.length-1; ++i) {
 );
   
 }
-else if(this.val===3){
+else if(this.props.val===3){
   
   return (
     <div className="Network" onMouseEnter={event =>{this.soln();}}>

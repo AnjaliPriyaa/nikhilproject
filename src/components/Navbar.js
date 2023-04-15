@@ -82,7 +82,7 @@ render(){
               horizontal: 'center',
             }}
           >
-               <Typography sx={{ p: 2, display: 'flex', flexDirection: 'column' }}><pre>{this.state.apiResponse}</pre></Typography>
+               <Typography sx={{ padding: 2 }}><pre>{this.state.apiResponse}</pre></Typography>
            
 
           </Popover>

@@ -60,7 +60,7 @@ class App extends React.Component{
   valueapp=1;
   constructor(props){
     super(props);
-    this.state={apis:1, page:0};//this.state={apiResponse:"",apiResponse1:""};
+    this.state={apis:1, page:0, val: 1};//this.state={apiResponse:"",apiResponse1:""};
   }
   screen1(){
     document.getElementsByClassName('Aps')[0].style.display="Inline";
@@ -97,12 +97,12 @@ class App extends React.Component{
 render(){  
 return (
  <Box sx={{background:`url("${BackgroundImage}")`, overflowY:'hidden',  boxShadow: '4px 2px 2px lightblue'}}>
-    <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 6, md: 14 }} sx={{paddingTop: '10px'}}>
+    <Grid container spacing={{ md: 2 }} columns={{ md: 14 }} sx={{paddingTop: '10px'}}>
           <Grid item xs={1.5}>
-          <Avatar src={Logo} sx={{marginLeft: '20px', width: 56, height: 56  }} />
+            <Avatar src={Logo} sx={{marginLeft: '20px', width: 56, height: 56  }} />
           </Grid>
           <Grid item xs={1.75}>
-            <Button  onClick={()=>{this.setState({page:0})}} >Network</Button>
+            <Button  onClick={()=>{this.setState({page:0, val: 1})}} >Network</Button>
           </Grid>
           <Grid item xs={1.75}>
             <Button  onClick={()=>{this.setState({page:1})}} >Container</Button>
@@ -123,8 +123,8 @@ return (
           <Typography> <Link href="https://drive.google.com/u/0/uc?id=1PQZ1r0aafUdte-pHxlbeSm7enwEETzxW&export=download">Download Backend</Link> </Typography>
           </Grid>
         </Grid>
-    <Box sx={{height:"calc(100% - 70px)", position: 'absolute',overflowY:'hidden', top: 70, left: 0, width: '100%', zIndex: '-1',background:'inherit'}}>
-      <Networks/>
+    <Box sx={{height:"calc(100% - 70px)", position: 'absolute',overflowY:'hidden', top: 60, left: 0, width: '100%', zIndex: '-1',background:'inherit'}}>
+      <Networks val = {this.state.val} handleVal={(value)=>this.setState({val:value})}/>
       <Container open={this.state.page === 1} handleClose={()=> this.setState({page:0})}/>
       <Image open={this.state.page === 2} handleClose={()=> this.setState({page:0})}/>
       <Details open={this.state.page === 3} handleClose={()=> this.setState({page:0})}/>
